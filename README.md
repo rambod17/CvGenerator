@@ -17,11 +17,16 @@ This tool can be used by following [this web](http://www.nrn.com.ar/cv-generator
 
 If you want to run this code locally, run `CG.Web` project or use the following commands:
 
-`dotnet run --project CvGenerator/Cv.Web.csproj --launch-profile Development`
+```` Dotnet
+dotnet run --project CvGenerator/CG.Web/CG.Web.csproj
+````
 
 or using Docker:
 
-`docker run -p 6001:80 my-app`
+```` Docker
+docker build -t cv-generator . -f CvGenerator/CG.Web/Dockerfile`
+docker run -d cv-generator
+````
 
 ## 🤙 Contributing
 
