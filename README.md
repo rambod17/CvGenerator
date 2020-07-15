@@ -1,6 +1,6 @@
 # 👑 CvGenerator
 
-Open source .NET Core based project to provide a web based tool to generate online Cvs.
+Open-source .NET Core based project to provide a web-based tool to generate online Cvs.
 
 ## 💻 What tools we use
 
