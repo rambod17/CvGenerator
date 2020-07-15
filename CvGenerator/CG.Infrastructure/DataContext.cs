@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CG.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace CG.Infrastructure
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext
     {
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
@@ -18,5 +20,6 @@ namespace CG.Infrastructure
         }
 
         // Entities
+        public DbSet<User> ApplicationUsers { get; set; }
     }
 }

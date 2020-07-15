@@ -9,7 +9,15 @@ namespace CG.Infrastructure
     {
         public static IServiceCollection RegisterInfrastructureDependencies(this IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("CONNECTION_STRING")));
+            if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CONNECTION_STRING")))
+            {
+                services.AddDbContext<DataContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("CONNECTION_STRING")));
+            }
+            else
+            {
+                services.AddDbContext<DataContext>();
+            }
+            
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             return services;
