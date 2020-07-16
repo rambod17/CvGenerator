@@ -29,7 +29,7 @@ namespace CG.Web
             services.RegisterInfrastructureDependencies();
             services.AddMediatR(typeof(Startup), typeof(CoreAssemblies));
 
-            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<DataContext>();
         }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CG.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CG.Web.Controllers
 {

@@ -5,7 +5,7 @@ using System;
 
 namespace CG.Infrastructure
 {
-    public class DataContext : IdentityDbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
@@ -15,11 +15,11 @@ namespace CG.Infrastructure
         {
             if (!optionsBuilder.IsConfigured || string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CONNECTION_STRING")))
             {
-                optionsBuilder.UseInMemoryDatabase(databaseName: "CvGenerator");
+                //optionsBuilder.UseInMemoryDatabase(databaseName: "CvGenerator");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet-CvGenerator-4ae3798a;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
         // Entities
-        public DbSet<User> ApplicationUsers { get; set; }
     }
 }
