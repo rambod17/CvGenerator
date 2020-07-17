@@ -62,8 +62,13 @@ namespace CG.Web.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Display(Name = "Birth date")]
-            public DateTime BirthDate { get; set; }
+            [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -78,7 +83,17 @@ namespace CG.Web.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, BirthDate = Input.BirthDate };
+                var user = new ApplicationUser 
+                { 
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    Person = new Person
+                    {
+                        FirstName = Input.FirstName,
+                        LastName = Input.LastName
+                    } 
+                };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

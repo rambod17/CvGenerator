@@ -21,5 +21,11 @@ namespace CG.Infrastructure
         }
 
         // Entities
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Cv> Cvs { get; set; }
+        public DbSet<CvOrigin> CvOrigins { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Person> People { get; set; }
+        public DbSet<PersonCv> PersonCvs { get; set; }
     }
 }
