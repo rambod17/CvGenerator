@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "My CVs";
+}
+
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">@ViewData["Title"]</h1>
+                <p class="lead">Here you can find your previously created CVs and manage them as you want. If you need help, always you can visit the FAQ page.</p>
+            </div>
+        </div>
+
+        <div class="text-right mb-4">
+            <div class="btn-group">
+                <button type="button" id="document-view" class="btn btn-sm btn-outline-secondary active" onclick="ToggleView()"><i class="fas fa-file"></i></button>
+                <button type="button" id="list-view" class="btn btn-sm btn-outline-secondary" onclick="ToggleView()"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+
+        <table id="list-content" class="table table-striped" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="text-center">
+                        <a asp-area="" asp-controller="Cvs" asp-action="New">+ Create new</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="document-content" class="row">
+            @for (int i = 0; i < 2; i++)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1735f091cbe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1735f091cbe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </div>
+                                <small class="text-muted">9 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-md-4">
+                <a style="text-decoration:none;" asp-area="" asp-controller="Cvs" asp-action="New">
+                    <div class="card mb-4 box-shadow" style="height: 390px;border: 5px #d8d8d8 dashed;">
+                        <div class="card-body">
+                            <div style="color: #d8d8d8;"><h5 class="card-text text-center align-middle" style="margin-top:170px">+ Create new</h5></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function ToggleView() {
+            var documentButton = $('#document-view');
+            var listButton = $('#list-view');
+
+            var documentContent = $('#document-content');
+            var listContent = $('#list-content');
+
+            if (listButton.hasClass('active')) {
+                listButton.removeClass('active');
+                documentButton.addClass('active');
+
+                console.log(documentContent);
+
+                listContent.hide();
+                documentContent.show();
+            } else {
+                documentButton.removeClass('active');
+                listButton.addClass('active');
+
+                console.log(listContent);
+
+                listContent.show();
+                documentContent.hide();
+            }
+        }
+    </script>
+}

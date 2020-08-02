@@ -12,4 +12,8 @@
     <ProjectReference Include="..\CG.Domain\CG.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Cv\Queries\" />
+  </ItemGroup>
+
 </Project>
