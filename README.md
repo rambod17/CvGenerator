@@ -12,6 +12,8 @@ Open-source .NET Core based project to provide a web-based tool to generate onli
 - [Docker](https://www.docker.com/)
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- [Swagger](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
+- [ASP.NET API Versioning](https://github.com/microsoft/aspnet-api-versioning)
 
 ## 💣 Usage
 
