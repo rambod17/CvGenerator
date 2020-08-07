@@ -31,14 +31,14 @@ namespace CG.Infrastructure
             return Task.CompletedTask;
         }
 
-        public async Task<IEnumerable<T>> GetAll<TEntity>() where TEntity : Entity
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return (IEnumerable<T>)await _context.Set<TEntity>().ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetBy<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : Entity
-        {
-            return (IEnumerable<T>)await _context.Set<TEntity>().Where(predicate).ToListAsync();
+        public async Task<IEnumerable<T>> GetBy(Expression<Func<T, bool>> predicate)
+        { 
+            return await _context.Set<T>().Where(predicate).ToListAsync();
         }
 
         public async Task<T> GetById(int id)
@@ -46,14 +46,17 @@ namespace CG.Infrastructure
             return (T)await _context.FindAsync(typeof(T), id);
         }
 
-        public Task LogicDelete(int id)
+        public async Task LogicDelete(int id)
         {
-            throw new NotImplementedException();
+            var entity = await GetById(id);
+            entity.IsEnabled = !entity.IsEnabled;
+            await Update(entity);
         }
 
         public Task Update(T entity)
         {
             _context.Update(entity);
+            entity.LastUpdate = DateTime.Now;
 
             return Task.CompletedTask;
         }

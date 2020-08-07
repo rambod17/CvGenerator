@@ -7,11 +7,11 @@ namespace CG.Core.Cv.Handlers
 {
     public class AddNewCvHandler : IRequestHandler<AddNewCvCommand>
     {
-        private readonly IRepository<Domain.Entities.Cv> _context;
+        private readonly IRepository<Domain.Entities.Cv> _cvRepository;
 
-        public AddNewCvHandler(IRepository<Domain.Entities.Cv> context)
+        public AddNewCvHandler(IRepository<Domain.Entities.Cv> cvRepository)
         {
-            _context = context;
+            _cvRepository = cvRepository;
         }
 
         public async Task<Unit> Handle(AddNewCvCommand request, CancellationToken cancellationToken)
@@ -21,8 +21,8 @@ namespace CG.Core.Cv.Handlers
                 Name = request.Name
             };
 
-            await _context.Add(cv);
-            await _context.SaveChangesAsync();
+            await _cvRepository.Add(cv);
+            await _cvRepository.SaveChangesAsync();
 
             return Unit.Value;
         }

@@ -16,7 +16,7 @@ namespace CG.Core
         Task SaveChangesAsync();
 
         Task<T> GetById(int id);
-        Task<IEnumerable<T>> GetAll<TEntity>() where TEntity : Entity;
-        Task<IEnumerable<T>> GetBy<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : Entity;
+        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetBy(Expression<Func<T, bool>> predicate);
     }
 }
