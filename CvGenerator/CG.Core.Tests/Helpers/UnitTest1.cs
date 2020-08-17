@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using Xunit;
 
 namespace CG.Core.Tests.Helpers
 {
     public class UnitTest1
     {
-        [Fact]
+        [Fact(Skip = "Not implemented test")]
         public void Test1()
         {
 
