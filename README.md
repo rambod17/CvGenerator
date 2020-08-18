@@ -1,6 +1,7 @@
 # 👑 CvGenerator
 
 [![Build Status](https://dev.azure.com/NCRZ06/CvGenerator/_apis/build/status/NICORUIZ06.CvGenerator?branchName=master)](https://dev.azure.com/NCRZ06/CvGenerator/_build/latest?definitionId=6&branchName=master)
+![Azure DevOps coverage (branch)](https://img.shields.io/azure-devops/coverage/NICORUIZ06/CvGenerator/6/master)
 
 Open-source .NET Core based project to provide a web-based tool to generate an online resume.
 
